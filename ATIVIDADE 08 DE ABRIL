@@ -1,0 +1,23 @@
+Exercício 1: Formas Normais
+Dependências: {ID_Projeto, ID_Consultor} → Horas; ID_Consultor → Nome/Especialidade; ID_Projeto → Nome_Projeto.
+Estado: 1NF.
+Justificativa: Existem dependências parciais (atributos que dependem apenas de "metade" da chave primária composta).
+Exercício 2: Biblioteca (3NF)
+SOCIO: ID_Sócio (PK), Nome
+CONTACTOS: ID_Sócio (FK), Contacto
+LIVRO: ISBN (PK), Título, Autor
+EMPRESTIMO: ID_Sócio (FK), ISBN (FK), Data_Emp, Data_Dev
+Exercício 3: Eventos (3NF)
+CONFERENCIA: ID_Conf (PK), Nome, Data, Local
+ORADOR: ID_Orador (PK), Nome
+PALESTRA: ID_Conf (FK), ID_Orador (FK), Titulo_Palestra (Tabela de ligação)
+Exercício 4: Oficina
+Anomalia: Atualização (repetição de dados do mecânico em cada serviço).
+Causa: Dependência transitiva (Valor_Hora depende do Mecânico, não do Veículo).
+Solução: Criar tabela MECANICO (ID_Mecanico, Nome, Valor_Hora) e referenciar via FK na manutenção.
+Exercício 5: Logística
+Melhoria: Separar veículos e motoristas das entregas para evitar perda de histórico e redundância.
+Estrutura:
+VEICULO: ID_Veic (PK), Matricula, Marca, Capacidade
+MOTORISTA: ID_Mot (PK), Nome
+ENTREGA: ID_Ent (PK), Destino, KM, ID_Veic (FK), ID_Mot (FK)
